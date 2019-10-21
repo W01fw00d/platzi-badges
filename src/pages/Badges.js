@@ -4,65 +4,67 @@ import { Link } from "react-router-dom";
 import "./styles/Badges.css";
 import confLogo from "../images/badge-header.svg";
 import BadgesList from "../components/BadgesList";
+import PageLoading from "../components/PageLoading";
+import PageError from "../components/PageError";
+
+import api from '../api';
 
 class Badges extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: [],
+      loading: true,
+      error: null,
+      data: undefined
     };
-    console.log('1. constructor()');
+    console.log("1. constructor()");
   }
 
   componentDidMount() {
-    console.log('3. componentDidMount()');
+    console.log("3. componentDidMount()");
+    this.fetchData();
+  }
 
-    this.timeoutId = setTimeout((data) => {
-      this.setState({
-        data: [
-          {
-            id: "0",
-            firstName: "Marc",
-            lastName: "Román",
-            email: "email@fake.com",
-            jobTitle: "Posición",
-            twitter: "fake_twitter",
-            avatarUrl: "https://www.gravatar.com/avatar?d=identicon"
-          },
-          {
-            id: "1",
-            firstName: "Cati",
-            lastName: "Teruel",
-            email: "email@fake.com",
-            jobTitle: "Posición",
-            twitter: "fake_twitter",
-            avatarUrl: "https://www.gravatar.com/avatar?d=identicon"
-          }
-        ],
-      })
-    }, 3000);
+  fetchData = async () => {
+    this.setState({ loading: true, error: null });
+
+    try {
+      const data = await api.badges.list();
+      this.setState({ loading: false, data: data });
+    } catch (error) {
+      this.setState({ loading: false, error: error });
+    }
   }
 
   componentDidUpdate(prevProps, prevState) {
-    console.log('5. componentDidUpdate()');
+    console.log("5. componentDidUpdate()");
     console.log({
       prevProps: prevProps,
-      prevState: prevState,
+      prevState: prevState
     });
 
     console.log({
       props: this.props,
-      state: this.state,
+      state: this.state
     });
   }
 
   componentWillUnmount() {
-    console.log('6. componentWillUnmount()');
+    console.log("6. componentWillUnmount()");
     clearTimeout(this.timeoutId);
   }
 
   render() {
-    console.log('2. render()');
+    if (this.state.loading) {
+      return <PageLoading />;
+    }
+    
+
+    if (this.state.error) {
+      return <PageError error={this.state.error} />;
+    }
+
+    console.log("2. render()");
     return (
       <React.Fragment>
         <div className="Badges">

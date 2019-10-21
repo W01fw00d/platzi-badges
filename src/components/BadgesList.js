@@ -3,6 +3,14 @@ import "./styles/BadgesList.css";
 
 class BadgesList extends React.Component {
   render() {
+    if (this.props.badges.length === 0) {
+      return (
+        <div>
+          <h3>No badges were found</h3>
+        </div>
+      );
+    }
+
     return (
       <div>
         <div>
