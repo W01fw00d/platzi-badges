@@ -1,6 +1,8 @@
 import React from "react";
 import "./styles/BadgesList.css";
 
+import Gravatar from "../components/Gravatar";
+
 class BadgesList extends React.Component {
   render() {
     if (this.props.badges.length === 0) {
@@ -19,11 +21,10 @@ class BadgesList extends React.Component {
               return (
                 <li className="Badge__item row" key={badge.id}>
                   <div className="col-3">
-                    <img
-                      className="Badge__item-avatar"
-                      src={badge.avatarUrl}
-                      alt="Avatar"
-                    />
+                  <Gravatar
+                    className="Badge__item-avatar"
+                    email={badge.email}
+                  />
                   </div>
                   <div className="col-9">
                     <b>
