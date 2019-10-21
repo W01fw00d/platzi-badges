@@ -4,20 +4,20 @@ import "./styles/BadgesList.css";
 class BadgesList extends React.Component {
   render() {
     return (
-      <div className="Badges__list">
-        <div className="Badges__container">
+      <div>
+        <div>
           <ul className="list-unstyled">
             {this.props.badges.map(badge => {
               return (
-                <li className="Badge row" key={badge.id}>
+                <li className="Badge__item row" key={badge.id}>
                   <div className="col-3">
                     <img
-                      className="Badge__avatar"
+                      className="Badge__item-avatar"
                       src={badge.avatarUrl}
                       alt="Avatar"
                     />
                   </div>
-                  <div className="Badge__section-info col-9">
+                  <div className="col-9">
                     <b>
                       {badge.firstName} {badge.lastName}
                     </b>
