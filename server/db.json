@@ -2,7 +2,7 @@
   "badges": [
     {
       "id": "2de30c42-9deb-40fc-a41f-05e62b5939a7",
-      "firstName": "Freda",
+      "firstName": "Gretta",
       "lastName": "Grady",
       "email": "Leann_Berge@gmail.com",
       "jobTitle": "Legacy Brand Director",
@@ -448,6 +448,22 @@
       "jobTitle": "Posición",
       "twitter": "fake_twitter",
       "id": "1gGkWg9"
+    },
+    {
+      "firstName": "Nombre",
+      "lastName": "Apellido",
+      "email": "email@fake.com",
+      "jobTitle": "Posición",
+      "twitter": "fake_twitter",
+      "id": "Wa9KSMu"
+    },
+    {
+      "firstName": "Nombre",
+      "lastName": "Apellido",
+      "email": "email@fake.com",
+      "jobTitle": "Posición",
+      "twitter": "fake_twitter",
+      "id": "VA6doei"
     }
   ]
 }
