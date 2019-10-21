@@ -6,8 +6,9 @@ import confLogo from "../images/badge-header.svg";
 import BadgesList from "../components/BadgesList";
 import PageLoading from "../components/PageLoading";
 import PageError from "../components/PageError";
+import MiniLoader from "../components/MiniLoader";
 
-import api from '../api';
+import api from "../api";
 
 class Badges extends React.Component {
   constructor(props) {
@@ -23,6 +24,9 @@ class Badges extends React.Component {
   componentDidMount() {
     console.log("3. componentDidMount()");
     this.fetchData();
+
+    // polling
+    this.intervalId = setInterval(this.fetchData, 5000);
   }
 
   fetchData = async () => {
@@ -34,7 +38,7 @@ class Badges extends React.Component {
     } catch (error) {
       this.setState({ loading: false, error: error });
     }
-  }
+  };
 
   componentDidUpdate(prevProps, prevState) {
     console.log("5. componentDidUpdate()");
@@ -51,14 +55,13 @@ class Badges extends React.Component {
 
   componentWillUnmount() {
     console.log("6. componentWillUnmount()");
-    clearTimeout(this.timeoutId);
+    clearInterval(this.intervalId);
   }
 
   render() {
-    if (this.state.loading) {
+    if (this.state.loading && !this.state.data) {
       return <PageLoading />;
     }
-    
 
     if (this.state.error) {
       return <PageError error={this.state.error} />;
@@ -88,6 +91,7 @@ class Badges extends React.Component {
         </div>
 
         <BadgesList badges={this.state.data} />
+        {this.state.loading && <MiniLoader />}
       </React.Fragment>
     );
   }
