@@ -4,9 +4,13 @@
   border-radius: 8px;
   overflow: hidden;
   padding: 0.5rem;
-  margin: 1em;
+  margin: 1em 0;
 }
 
 .Badge__item-avatar {
   border-radius: 50%;
+}
+
+.Link__contains {
+  width: -webkit-fill-available;
 }

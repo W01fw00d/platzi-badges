@@ -8,7 +8,7 @@ class BadgesListItem extends React.Component {
     let badge = this.props.badge;
 
     return (
-      <React.Fragment>
+      <div className="row container-fluid d-flex align-items-center">
         <div className="col-3">
           <Gravatar className="Badge__item-avatar" email={badge.email} />
         </div>
@@ -16,13 +16,12 @@ class BadgesListItem extends React.Component {
           <b>
             {badge.firstName} {badge.lastName}
           </b>
-          <br />
-          @{badge.twitter}
+          <br />@{badge.twitter}
           {/* <a href={"https://twitter.com/" + badge.twitter}>@{badge.twitter}</a> */}
           <br />
           {badge.jobTitle}
         </div>
-      </React.Fragment>
+      </div>
     );
   }
 }
