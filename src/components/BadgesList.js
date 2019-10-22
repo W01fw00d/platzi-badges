@@ -4,14 +4,26 @@ import { Link } from "react-router-dom";
 import "./styles/BadgesList.css";
 import BadgesListItem from "../components/BadgesListItem";
 
-function BadgesList(props) {
+// Custom hook
+function useSearchBadges(badges) {
   const [query, setQuery] = React.useState("");
+  const [filteredBadges, setFilteredBadges] = React.useState(badges);
 
-  const filteredBadges = props.badges.filter(badge => {
-    return `${badge.firstName} ${badge.lastName}`
-      .toLowerCase()
-      .includes(query.toLowerCase());
-  });
+  React.useMemo(() => {
+    const result = badges.filter(badge => {
+      return `${badge.firstName} ${badge.lastName}`
+        .toLowerCase()
+        .includes(query.toLowerCase());
+    });
+
+    setFilteredBadges(result);
+  }, [badges, query]);
+
+  return { query, setQuery, filteredBadges };
+}
+
+function BadgesList(props) {
+  const { query, setQuery, filteredBadges } = useSearchBadges(props.badges);
 
   if (filteredBadges.length === 0) {
     return (
