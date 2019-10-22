@@ -1,19 +1,16 @@
-.BadgesList ul>li {
-  margin-bottom: 1rem;
+.Badge__item {
+  background: #ffffff;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+  padding: 0.5rem;
+  margin: 1em 0;
 }
 
-.BadgesListItem {
-  background: #FFFFFF;
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.23);
-  border-radius: 5px;
-  display: flex;
-  padding: 1rem;
-}
-
-.BadgesListItem__avatar {
+.Badge__item-avatar {
   border-radius: 50%;
-  background: #a3a3a3;
-  margin-right: 0.5rem;
-  width: 80px;
-  height: 80px;
+}
+
+.Link__contains {
+  width: -webkit-fill-available;
 }
